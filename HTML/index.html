@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CAP.AI</title>
+  <link rel="stylesheet" href="/CSS/style.css" />
+  <link rel="icon" type="image/x-icon" href="/Logo/CAP AI.ico ">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="app-bg">
+    <header>
+      <h1>CAP.AI</h1>
+      <p class="subtitle">Discover Your Next Big Capstone Idea, Instantly!</p>
+    </header>
+    <main class="main-content">
+      <section class="card filters">
+        <h2>Filters</h2>
+        <div class="form-group">
+          <label for="industry">Industry</label>
+          <!-- Custom dropdown for Industry with Bootstrap Icons -->
+          <div class="custom-dropdown" id="customIndustry">
+            <button type="button" class="dropdown-toggle" id="selectedIndustry">
+              <i class="bi bi-briefcase"></i> <span>All Industries</span>
+              <i class="bi bi-caret-down-fill dropdown-caret"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li data-value="All Industries"><i class="bi bi-briefcase"></i> All Industries</li>
+              <li data-value="Healthcare"><i class="bi bi-heart-pulse"></i> Healthcare</li>
+              <li data-value="Education"><i class="bi bi-mortarboard"></i> Education</li>
+              <li data-value="Agriculture"><i class="bi bi-flower1"></i> Agriculture</li>
+              <li data-value="Finance"><i class="bi bi-cash-coin"></i> Finance</li>
+              <li data-value="Retail"><i class="bi bi-bag"></i> Retail</li>
+              <li data-value="Manufacturing"><i class="bi bi-gear"></i> Manufacturing</li>
+              <li data-value="Transportation"><i class="bi bi-truck"></i> Transportation</li>
+              <li data-value="Energy"><i class="bi bi-lightning-charge"></i> Energy</li>
+              <li data-value="Entertainment"><i class="bi bi-film"></i> Entertainment</li>
+              <li data-value="Government"><i class="bi bi-bank"></i> Government</li>
+            </ul>
+            <input type="hidden" id="industry" value="All Industries">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="projectType">Project Type</label>
+          <!-- Custom dropdown for Project Type with Bootstrap Icons -->
+          <div class="custom-dropdown" id="customProjectType">
+            <button type="button" class="dropdown-toggle" id="selectedProjectType">
+              <i class="bi bi-list-task"></i> <span>All Project Types</span>
+              <i class="bi bi-caret-down-fill dropdown-caret"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li data-value="All Project Types"><i class="bi bi-list-task"></i> All Project Types</li>
+              <li data-value="Web Development"><i class="bi bi-globe2"></i> Web Development</li>
+              <li data-value="Arduino / IoT"><i class="bi bi-cpu"></i> Arduino / IoT</li>
+              <li data-value="Desktop Application"><i class="bi bi-laptop"></i> Desktop Application</li>
+              <li data-value="Mobile Application"><i class="bi bi-phone"></i> Mobile Application</li>
+              <li data-value="Artificial Intelligence / Machine Learning"><i class="bi bi-robot"></i> Artificial Intelligence / Machine Learning</li>
+              <li data-value="Cybersecurity"><i class="bi bi-shield-lock"></i> Cybersecurity</li>
+              <li data-value="Game Development"><i class="bi bi-controller"></i> Game Development</li>
+              <li data-value="Data Science Analytics"><i class="bi bi-bar-chart"></i> Data Science Analytics</li>
+              <li data-value="Blockchain"><i class="bi bi-link"></i> Blockchain</li>
+            </ul>
+            <input type="hidden" id="projectType" value="All Project Types">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Difficulty</label>
+          <div class="difficulty">
+            <button class="diff-btn active" data-diff="All">All</button>
+            <button class="diff-btn" data-diff="Easy">Easy</button>
+            <button class="diff-btn" data-diff="Medium">Medium</button>
+            <button class="diff-btn" data-diff="Hard">Hard</button>
+          </div>
+        </div>
+        <div class="button-row">
+          <button id="generateBtn" class="main-btn generate-btn" title="Generate Ideas">
+            Generate Idea
+          </button>
+          <button id="exportBtn" class="main-btn pdf-btn" title="Export to PDF" disabled>
+            <i class="bi bi-file-earmark-pdf-fill"></i>
+          </button>
+        </div>
+        <div class="tokens" id="tokensLeft">Tokens Left:</div>
+      </section>
+      <section class="card output" id="output">
+        <div class="placeholder">Capstone idea will be shown here</div>
+      </section>
+    </main>
+   
+    <!-- Modal for token limit -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-icon">
+          <!-- Example: lock/limit icon -->
+          <svg width="70" height="70" viewBox="0 0 24 24" fill="none">
+            <rect x="4" y="10" width="16" height="9" rx="3" stroke="#181818" stroke-width="2"/>
+            <path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="#181818" stroke-width="2"/>
+            <circle cx="12" cy="15" r="1.5" fill="#181818"/>
+          </svg>
+        </div>
+        <div class="modal-title">Limit reached!</div>
+        <div class="modal-message" id="modalMessage">
+          Sorry, you are limit token.<br>
+          Please try again in 5 hours.<br>
+          <span id="modalNextTime"></span>
+        </div>
+        <button id="modalOkBtn" class="modal-ok-btn">Ok</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/Javascript/script.js"></script>
+</body>
+</html>

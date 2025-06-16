@@ -1,0 +1,823 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f7f8fa;
+  color: #222;
+  min-height: 100vh;
+}
+
+.app-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  text-align: center;
+  margin-top: 24px !important;
+  margin-bottom: 70px !important;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  gap: 12px !important;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 0 !important;
+
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0001;
+  padding: 28px 18px;
+  min-width: 280px;
+  max-width: 350px;
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filters {
+  gap: 0 !important;
+  padding-bottom: 4px !important;
+  margin-top: 0 !important;
+}
+.filters h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.05rem; /* was 1.2rem */
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+.filters label {
+  font-weight: 500;
+  margin-bottom: 1px;
+  color: #222;
+  font-size: 0.93rem; /* was 1rem */
+}
+
+.filters select {
+  margin-top: 4px;
+  padding: 6px 12px; /* adjust for smaller look */
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.93rem; /* was 1rem */
+  background: #f8fafc;
+  color: #222;
+  outline: none;
+  transition: border 0.2s;
+  width: 100%;
+}
+
+.filters select:focus {
+  border: 1.5px solid #22c55e;
+}
+
+.difficulty {
+  display: flex;
+  gap: 2px !important; /* tighter buttons */
+  margin-bottom: 2px !important;
+}
+
+.diff-btn {
+  flex: 1;
+  padding: 7px 0;
+  border: none;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #222;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.93rem;
+}
+
+.diff-btn.active, .diff-btn:hover {
+  background: #16a34a;
+  color: #fff;
+}
+
+.main-btn {
+  background: #181818;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 1rem; /* was 1.15rem or higher in some cases */
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #18181822;
+}
+
+.main-btn i {
+  font-size: 1.7rem;
+  color: #22c55e;
+  vertical-align: middle;
+}
+
+.main-btn svg {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.main-btn:active {
+  background: #181818;
+}
+
+.main-btn:disabled {
+  background: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.main-btn:hover:not(:disabled) {
+  background: #232323;
+}
+
+.tokens {
+  margin-top: 1px !important;
+  color: #181818;
+  font-size: 0.97rem;
+  text-align: center;
+}
+
+.output {
+  min-height: 340px;
+  min-width: 320px;
+  max-width: 600px;
+  flex: 2 1 500px;
+  padding: 40px 32px;
+  font-size: 1.08rem;
+  word-break: break-word;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 0 !important;
+}
+
+.placeholder {
+  color: #cbd5e1;
+  font-size: 1rem;
+  margin-top: 40px;
+  text-align: center;
+  width: 100%;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  box-sizing: border-box;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 700px) {
+  .placeholder {
+    padding-left: 7vw;
+    padding-right: 7vw;
+    font-size: 0.97rem;
+    margin-top: 24px;
+  }
+ 
+  body, .app-bg {
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
+    box-sizing: border-box !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* --- Make AI output text smaller on mobile --- */
+@media (max-width: 700px) {
+  .output {
+    font-size: 0.88rem !important;
+  }
+  .idea-title {
+    font-size: 0.98rem !important;
+  }
+  .idea-section {
+    font-size: 0.87rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .output {
+    font-size: 0.83rem !important;
+  }
+  .idea-title {
+    font-size: 0.93rem !important;
+  }
+  .idea-section {
+    font-size: 0.82rem !important;
+  }
+}
+/* --- End of smaller AI output text on mobile --- */
+
+@media (max-width: 480px) {
+  .placeholder {
+    padding-left: 8vw;
+    padding-right: 8vw;
+    font-size: 0.93rem;
+    margin-top: 18px;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 8vw !important;
+    margin-right: 8vw !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  body, .app-bg {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* --- Ultimate mobile edge spacing fix --- */
+@media (max-width: 700px) {
+  body, .app-bg {
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+@media (max-width: 480px) {
+  body, .app-bg {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+/* --- End of ultimate mobile edge spacing fix --- */
+
+.idea-title {
+  font-size: 1.05rem; /* was 1.3rem */
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #22c55e;
+}
+
+.idea-section {
+  margin-bottom: 10px;
+  line-height: 1.4;
+  font-size: 0.97rem; /* add smaller font for section text */
+}
+
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.18);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 36px 28px 28px 28px;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px #0002;
+  text-align: center;
+  min-width: 300px;
+  max-width: 90vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-icon {
+  margin: 18px 0 10px 0;
+}
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #181818;
+  margin-bottom: 8px;
+  margin-top: 6px;
+}
+.modal-message {
+  color: #555;
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+.modal-ok-btn {
+  background: #181818;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 36px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+}
+.modal-ok-btn:hover {
+  background: #e53935;
+  color: #fff;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.button-row .main-btn {
+  flex: 1 1 0;
+  max-width: 48%;
+  min-width: 44px;
+  padding: 12px 0;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #22c55e22;
+}
+
+.button-row .main-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Generate Idea Hover: brighter green */
+.generate-btn:hover:not(:disabled) {
+  background: #16a34a;
+}
+.generate-btn:hover:not(:disabled) .bi-person {
+  color: #181818;
+}
+
+
+/* PDF Download Hover: soft red background, lighter red icon */
+.pdf-btn {
+  background: #181818 !important;
+  transition: background 0.2s;
+  font-size: 0.95rem;
+  padding: 0.45em 1.1em;
+}
+.pdf-btn .bi-file-earmark-pdf-fill {
+  font-size: 1.1rem;
+  color: #fff;
+  transition: color 0.2s;
+}
+.pdf-btn:hover:not(:disabled), .pdf-btn:focus:not(:disabled), .pdf-btn:active:not(:disabled) {
+  background: #16a34a !important;
+}
+.pdf-btn:disabled {
+  background: #181818 !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.pdf-btn:disabled .bi-file-earmark-pdf-fill {
+  color: #fff;
+  opacity: 0.7;
+}
+#pdf-btn.main-btn{
+    background: #181818 !important;
+}
+/* Change Generate Idea button to #181818 background and #fff text */
+#generateBtn.main-btn {
+  background: #181818;
+  color: #fff;
+}
+
+/* Generate Idea button hover/focus: green (#16a34a) */
+#generateBtn.main-btn:hover:not(:disabled),
+#generateBtn.main-btn:focus-visible:not(:disabled) {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Export to PDF button hover/focus: red (#e53935) */
+#exportBtn.main-btn:hover:not(:disabled),
+#exportBtn.main-btn:focus-visible:not(:disabled) {
+  background: #181818;
+  color: #fff;
+}
+
+/* Custom dropdown styles for Project Type */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+.custom-dropdown .dropdown-toggle {
+  width: 100%;
+  padding: 6px 12px; /* adjust for smaller look */
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  color: #222;
+  font-size: 0.93rem; /* was 1rem */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+.custom-dropdown .dropdown-toggle:focus {
+  border: 1.5px solid #22c55e;
+  outline: none;
+}
+.custom-dropdown .dropdown-caret {
+  margin-left: 8px;
+}
+.custom-dropdown .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 110%;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px #0001;
+  z-index: 10;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.custom-dropdown.open .dropdown-menu {
+  display: block;
+}
+.custom-dropdown .dropdown-menu li {
+  padding: 7px 14px !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+.custom-dropdown .dropdown-menu li:hover {
+  background: #f1f5f9;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.modal-close-btn:hover {
+  color: #ef4444;
+}
+.modal-content {
+  position: relative;
+}
+
+#modalNextTime {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.97em;
+  color: #22c55e;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* --- Responsive and Consistent Margins & Padding Fix --- */
+
+/* Desktop: Ensure consistent max-width and center alignment */
+.card, .output, .filters {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tablet: Consistent horizontal padding and margin */
+@media (max-width: 900px) {
+  .card, .output, .filters {
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile: Tighter but equal left/right margins and padding */
+@media (max-width: 700px) {
+  .card, .output, .filters {
+    padding-left: 6vw;
+    padding-right: 6vw;
+    margin-left: 4vw;
+    margin-right: 4vw;
+    box-sizing: border-box;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 6vw !important;
+    margin-right: 6vw !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  body, .app-bg {
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card, .output, .filters {
+    padding-left: 4vw;
+    padding-right: 4vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    box-sizing: border-box;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 8vw !important;
+    margin-right: 8vw !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
+  body, .app-bg {
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+  }
+  .card, .output, .filters, .placeholder {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Text spacing for better readability */
+.card, .output {
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+/* --- End of Responsive Fix --- */
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 0 4vw;
+  }
+  .output, .filters {
+    min-width: unset;
+    max-width: 100%;
+  }
+  .output {
+    padding: 24px 4vw;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-content {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .filters, .card, .output {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 0 8px 0 !important;
+    padding: 10px 3vw !important;
+    box-sizing: border-box !important;
+  }
+  .main-content .filters {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .output{
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2.1rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 0.80rem;
+  }
+  .main-content {
+    gap: 2px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .filters, .card, .output {
+    padding: 8px 2vw !important;
+    margin: 0 0 6px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .main-content .filters {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .custom-dropdown .dropdown-toggle, .custom-dropdown .dropdown-menu li {
+    font-size: 0.89rem !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+}
+
+/* --- Compact spacing for project details (Duration, Difficulty, Tech Stack) --- */
+
+/* Target the sections for tighter vertical spacing */
+.idea-section, .idea-title {
+  margin-bottom: 6px !important;
+}
+
+.duration-label, .difficulty-label, .techstack-label {
+  display: block;
+  margin-bottom: 2px !important;
+  margin-top: 0 !important;
+}
+
+/* Remove extra margin between details */
+.duration-label + span,
+.difficulty-label + span,
+.techstack-label + span {
+  margin-top: 0 !important;
+}
+
+/* If using paragraphs or divs for these, make all compact */
+.duration-label, .difficulty-label, .techstack-label, .duration-value, .difficulty-value, .techstack-value {
+  margin-bottom: 2px !important;
+  margin-top: 0 !important;
+}
+
+/* --- End of compact spacing fix --- */
+
+/* --- Full width and tighter spacing for custom dropdowns and filters --- */
+.filters {
+  gap: 0 !important;
+  padding-bottom: 4px !important;
+}
+.form-group {
+  margin-bottom: 0 !important;
+}
+.custom-dropdown, .filters select {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-bottom: 2px !important;
+}
+.custom-dropdown .dropdown-toggle, .filters select {
+  padding: 6px 12px !important;
+  font-size: 1rem !important;
+}
+.custom-dropdown .dropdown-menu {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+.custom-dropdown .dropdown-menu li {
+  padding: 7px 14px !important;
+  font-size: 1rem !important;
+}
+.filters label {
+  margin-bottom: 1px !important;
+}
+.difficulty {
+  margin-bottom: 2px !important;
+  gap: 2px !important;
+}
+.button-row, .filters .main-btn, .filters #generateBtn, .filters #exportBtn {
+  margin-bottom: 4px !important;
+  margin-top: 4px !important;
+}
+.tokens {
+  margin-top: 1px !important;
+}
+/* --- End of full width and tighter spacing fix --- */
+
+/* --- Smaller text and icon for custom dropdowns --- */
+.custom-dropdown .dropdown-toggle,
+.custom-dropdown .dropdown-menu li {
+  font-size: 0.92rem !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.custom-dropdown .dropdown-toggle i,
+.custom-dropdown .dropdown-menu li i {
+  font-size: 1.05em !important;
+  min-width: 1.1em;
+}
+.custom-dropdown .dropdown-caret {
+  font-size: 1em !important;
+}
+/* --- End of smaller text and icon for custom dropdowns --- */
+
+.main-content .filters {
+  margin-left: 120px;
+  margin-right: auto;
+}
+
+/* --- Modal Responsive Fix --- */
+@media (max-width: 600px) {
+  .modal-content {
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: 100vw !important;
+    margin-left: 4vw !important;
+    margin-right: 4vw !important;
+    padding: 18px 4vw 18px 4vw !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+}
+@media (max-width: 400px) {
+  .modal-content {
+    margin-left: 2vw !important;
+    margin-right: 2vw !important;
+    padding: 10px 2vw 10px 2vw !important;
+    border-radius: 8px !important;
+  }
+}
+/* --- End of Modal Responsive Fix --- */
