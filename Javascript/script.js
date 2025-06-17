@@ -83,7 +83,7 @@ modalOkBtn.addEventListener('click', () => {
 
 function showModal() {
   let nextTime;
-  if (tokensLeft <= 1000) { // FIXED
+  if (tokensLeft <= 1000) {
     tokensLeft = 0;
     updateTokenUI();
     if (cooldownUntil && Date.now() < parseInt(cooldownUntil, 10)) {
@@ -136,7 +136,7 @@ Project Type: ${projectType}
   prompt += `\nMake the description detailed and comprehensive. Do not include any explanation or extra text, only the JSON object.`;
 
   try {
-    const response = await fetch('http://localhost:3001/api/proxy', {
+    const response = await fetch('/api/proxy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
