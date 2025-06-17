@@ -133,7 +133,7 @@ Project Type: ${projectType}
     prompt += `You must generate an idea STRICTLY for a ${difficulty.toLowerCase()} level student. Do NOT generate ideas for any other difficulty. Only generate for: ${difficulty}. Set the \"difficulty\" key to \"${difficulty}\" only. This is required.`;
   }
 
-  prompt += " The description must be concise, clear, and strictly limited to 3-4 sentences. Only include the JSON object, no extra text.";
+  prompt += " The description must be concise, clear, and strictly limited to 3-4 sentences. Respond ONLY with a valid JSON object, no extra text, no markdown, no explanation, no code block, no label, no prefix, no suffix. If you cannot answer, respond with an empty JSON object: {}.";
 
   try {
     const response = await fetch('/api/proxy', {
