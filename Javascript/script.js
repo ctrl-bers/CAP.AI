@@ -26,7 +26,7 @@ function saveCooldown(nextTime) {
 }
 function loadTokens() {
   const t = localStorage.getItem(TOKEN_KEY);
-  return t !== null ? parseInt(t, 10) : 10000;
+  return t !== null ? parseInt(t, 10) : 5000; // Default to 5000 tokens if not set
 }
 function loadCooldown() {
   return localStorage.getItem(COOLDOWN_KEY);
@@ -45,7 +45,7 @@ function checkCooldownOnLoad() {
       generateBtn.disabled = true;
     } else {
       // Cooldown expired, reset tokens
-      tokensLeft = 10000;
+      tokensLeft = 5000;
       saveTokens();
       localStorage.removeItem(COOLDOWN_KEY);
       updateTokenUI();
@@ -147,7 +147,7 @@ Project Type: ${projectType}
   }
 
   try {
-    const response = await fetch('http://localhost:3001/api/proxy', {
+    const response = await fetch('https://cap-ai.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -162,11 +162,11 @@ Project Type: ${projectType}
       currentIdea = data.idea;
       renderIdea(data.idea);
       exportBtn.disabled = false;
-      // Deduct 200 tokens per generation
-      tokensLeft -= 1000;
+      // Deduct 400 tokens per generation
+      tokensLeft -= 400;
       if (tokensLeft < 0) tokensLeft = 0;
       updateTokenUI();
-      if (tokensLeft < 200) {
+      if (tokensLeft < 400) {
         generateBtn.disabled = true;
       }
     } else if (data.error) {

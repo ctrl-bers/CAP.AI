@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Example route: replace with your actual API endpoint and logic
 app.post('/api/proxy', async (req, res) => {
   console.log('POST /api/proxy called');
   const { prompt } = req.body;
