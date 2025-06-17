@@ -8,5 +8,19 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "node-fetch": "^2.7.0"
-  }
+  },
+  "description": "\u0000 \u0000",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-bers/CAP.AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/ctrl-bers/CAP.AI/issues"
+  },
+  "homepage": "https://github.com/ctrl-bers/CAP.AI#readme"
 }
