@@ -8,6 +8,9 @@ export default async function handler(req, res) {
 
   const { prompt } = req.body;
   const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'API_KEY environment variable is missing. Please set it in your Vercel project settings.' });
+  }
 
   try {
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
