@@ -147,40 +147,20 @@ Project Type: ${projectType}
   }
 
   try {
-    const apiKey = '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'; // <-- Replace with your OpenAI API key
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    const response = await fetch('http://localhost:3001/api/proxy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3-70b-instruct',
-        messages: [{ role: 'user', content: prompt }],
-        max_tokens: 400,
+        prompt: prompt
       }),
     });
 
     const data = await response.json();
-    if (data.choices && data.choices[0] && data.choices[0].message) {
-      let idea;
-      try {
-        let content = data.choices[0].message.content.trim();
-        if (content.startsWith("```")) {
-          content = content.replace(/```(json)?/g, '').trim();
-        }
-        if (content.startsWith('{') && content.endsWith('}')) {
-          idea = JSON.parse(content);
-        } else {
-          outputEl.innerHTML = `<pre style=\"color:#ef4444;\">AI response is not a valid capstone idea. Please try again.</pre>`;
-          return;
-        }
-      } catch {
-        outputEl.innerHTML = `<pre style=\"color:#ef4444;\">AI response could not be parsed as JSON. Try again.<br><br>${data.choices[0].message.content}</pre>`;
-        return;
-      }
-      currentIdea = idea;
-      renderIdea(idea);
+    if (data.idea) {
+      currentIdea = data.idea;
+      renderIdea(data.idea);
       exportBtn.disabled = false;
       // Deduct 200 tokens per generation
       tokensLeft -= 1000;
@@ -189,6 +169,8 @@ Project Type: ${projectType}
       if (tokensLeft < 200) {
         generateBtn.disabled = true;
       }
+    } else if (data.error) {
+      outputEl.innerHTML = `<pre style=\"color:#ef4444;\">${data.error}<br>${data.details ? JSON.stringify(data.details) : ''}</pre>`;
     } else {
       outputEl.innerHTML = `<div class=\"placeholder\">No idea generated. Try again.</div>`;
     }
