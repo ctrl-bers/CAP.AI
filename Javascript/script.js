@@ -26,7 +26,7 @@ function saveCooldown(nextTime) {
 }
 function loadTokens() {
   const t = localStorage.getItem(TOKEN_KEY);
-  return t !== null ? parseInt(t, 10) : 5000; // Default to 5000 tokens if not set
+  return t !== null ? parseInt(t, 10) : 10000;
 }
 function loadCooldown() {
   return localStorage.getItem(COOLDOWN_KEY);
@@ -45,7 +45,7 @@ function checkCooldownOnLoad() {
       generateBtn.disabled = true;
     } else {
       // Cooldown expired, reset tokens
-      tokensLeft = 5000;
+      tokensLeft = 10000;
       saveTokens();
       localStorage.removeItem(COOLDOWN_KEY);
       updateTokenUI();
@@ -73,10 +73,7 @@ diffBtns.forEach(btn => {
 function updateTokenUI() {
   tokensLeftEl.textContent = `Tokens left: ${tokensLeft}`;
   saveTokens();
-  generateBtn.disabled = tokensLeft < 200;
-  if (tokensLeft < 200) {
-    showModal();
-  }
+  generateBtn.disabled = tokensLeft <= 1000; // FIXED
 }
 
 // Modal show/hide logic
@@ -86,8 +83,9 @@ modalOkBtn.addEventListener('click', () => {
 
 function showModal() {
   let nextTime;
-  if (tokensLeft < 200) {
-    // If already in cooldown, use stored time, else set new cooldown
+  if (tokensLeft <= 1000) { // FIXED
+    tokensLeft = 0;
+    updateTokenUI();
     if (cooldownUntil && Date.now() < parseInt(cooldownUntil, 10)) {
       nextTime = new Date(parseInt(cooldownUntil, 10));
     } else {
@@ -101,12 +99,11 @@ function showModal() {
 
 // Generate Idea
 generateBtn.addEventListener('click', async () => {
-  if (tokensLeft < 200) {
+  if (tokensLeft <= 1000) { // FIXED
     showModal();
     return;
   }
 
-  // Insert time icon while generating
   outputEl.innerHTML = '<div class="placeholder"><span style="font-size:2em;vertical-align:middle;"></span> Generating idea...</div>';
   exportBtn.disabled = true;
 
@@ -114,7 +111,6 @@ generateBtn.addEventListener('click', async () => {
   const projectType = projectTypeEl.value;
   let difficulty = selectedDifficulty;
 
-  // If 'All' is selected, pick a random difficulty for the prompt
   let randomDiff = '';
   if (difficulty === 'All') {
     const diffArr = ['Easy', 'Medium', 'Hard'];
@@ -139,15 +135,8 @@ Project Type: ${projectType}
 
   prompt += `\nMake the description detailed and comprehensive. Do not include any explanation or extra text, only the JSON object.`;
 
-  // --- Generate button logic ---
-  if (tokensLeft < 1000) {
-    outputEl.innerHTML = '<div class="placeholder" style="color:#ef4444;">You have reached your daily token limit. Please try again tomorrow.</div>';
-    generateBtn.disabled = true;
-    return;
-  }
-
   try {
-    const response = await fetch('https://api.render.com/deploy/srv-d18k5u6mcj7s73a2uth0?key=deLpAs8yWvQ', {
+    const response = await fetch('http://localhost:3001/api/proxy', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -158,34 +147,29 @@ Project Type: ${projectType}
     });
 
     const data = await response.json();
+    let ideaGenerated = false;
     if (data.idea) {
       currentIdea = data.idea;
       renderIdea(data.idea);
       exportBtn.disabled = false;
-      // Deduct 400 tokens per generation
-      tokensLeft -= 400;
-      if (tokensLeft < 0) tokensLeft = 0;
-      updateTokenUI();
-      if (tokensLeft < 400) {
-        generateBtn.disabled = true;
-      }
+      ideaGenerated = true;
     } else if (data.error) {
       outputEl.innerHTML = `<pre style=\"color:#ef4444;\">${data.error}<br>${data.details ? JSON.stringify(data.details) : ''}</pre>`;
     } else {
       outputEl.innerHTML = `<div class=\"placeholder\">No idea generated. Try again.</div>`;
     }
+
+    tokensLeft -= 1000;
+    if (tokensLeft < 0) tokensLeft = 0;
+    updateTokenUI();
   } catch (err) {
     outputEl.innerHTML = `<div class="placeholder">Error generating idea. Check your API key or internet connection.</div>`;
   }
 });
 
-// Render idea to output
 function renderIdea(idea) {
-  // Difficulty color coding and icon
-// No difficulty color or icon
-let diffColor = '';
-let diffIcon = '';
-  // Add clock icon for duration
+  let diffColor = '';
+  let diffIcon = '';
   outputEl.innerHTML = `
     <div>
       <div class="idea-title">${idea.title}</div>
@@ -197,20 +181,15 @@ let diffIcon = '';
   `;
 }
 
-// Export to PDF
 exportBtn.addEventListener('click', () => {
   if (!currentIdea) return;
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
   let y = 20;
-  // Modern header (removed background for title)
-  // doc.setFillColor(34, 197, 94);
-  // doc.roundedRect(5, 10, 200, 15, 5, 5, 'F');
-  doc.setFontSize(15); // was 18, now smaller
-  doc.setTextColor(34,197,94); // Use green for title text
+  doc.setFontSize(15);
+  doc.setTextColor(34,197,94);
   doc.text(currentIdea.title, 12, 21);
   y += 10;
-  // Section styling
   doc.setFontSize(12);
   doc.setTextColor(33, 37, 41);
   doc.setFont('helvetica', 'bold');
@@ -235,7 +214,6 @@ exportBtn.addEventListener('click', () => {
   let techStack = Array.isArray(currentIdea.techStack) ? currentIdea.techStack.join(', ') : currentIdea.techStack;
   let splitTech = doc.splitTextToSize(techStack, 180);
   doc.text(splitTech, 10, y+7);
-  // Footer
   doc.setFontSize(10);
   doc.setTextColor(180,180,180);
   doc.text('Generated by CAP AI', 10, 285);
@@ -249,13 +227,11 @@ const dropdownMenu = customDropdown.querySelector('.dropdown-menu');
 const dropdownItems = dropdownMenu.querySelectorAll('li');
 const hiddenInput = document.getElementById('projectType');
 
-// Toggle dropdown
 dropdownToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   customDropdown.classList.toggle('open');
 });
 
-// Select item
 dropdownItems.forEach(item => {
   item.addEventListener('click', () => {
     const icon = item.querySelector('i').outerHTML;
@@ -266,7 +242,6 @@ dropdownItems.forEach(item => {
   });
 });
 
-// Close dropdown on outside click
 window.addEventListener('click', () => {
   customDropdown.classList.remove('open');
 });
