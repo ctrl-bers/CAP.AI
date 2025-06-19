@@ -40,7 +40,7 @@ let cooldownUntil = loadCooldown();
 function checkCooldownOnLoad() {
   if (cooldownUntil) {
     const now = Date.now();
-    if (now < parseInt(cooldownUntil, 1)) {
+    if (now < parseInt(cooldownUntil, 10)) {
       showModal();
       generateBtn.disabled = true;
     } else {
