@@ -19,11 +19,12 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`
       },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
+     body: JSON.stringify({
+        model: 'openai/gpt-3.5-turbo', // Change to GPT-3.5 on OpenRouter
         messages: [{ role: 'user', content: prompt }],
-        max_tokens: 400
-      })
+        max_tokens: 300 // You can set this to 300, 256, or whatever limit you prefer
+    })
+
     });
     const data = await response.json();
     if (!response.ok) {
