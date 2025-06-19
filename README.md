@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="logo.png" alt="CAP.AI Logo" width="150"/>
+</p>
+
+# 🧠 CAP.AI - Capstone Assistant Powered by AI
+
+
+
 # 🧠 CAP.AI - Capstone Assistant Powered by AI
 
 ## Description  
