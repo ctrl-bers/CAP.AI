@@ -4,17 +4,16 @@
 
 <h1 align="center">🧠 CAP.AI - Capstone Assistant Powered by AI</h1>
 
-
-
-
-# 🧠 CAP.AI - Capstone Assistant Powered by AI
-
 ## Description  
-**CAP.AI** is an AI-powered **web application** that creates personalized capstone project ideas based on your selected **industry** and **project type**.  
-With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack — all generated in real time using AI.
+Capstone Assistant Powered By AI (CAP.AI) is an AI-powered web application that creates personalized capstone project ideas based on your selected industry and project type.  
+With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack all generated in real time using AI.
 
 Note: Perfect this for  students, instructors, and project advisers who need instant, relevant, and creative capstone project ideas.
-
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/badge/Status-Live-brightgreen?style=flat-square"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Built%20With-Node.js-blue?style=flat-square"></a>
+  <a href="#"><img src="https://img.shields.io/badge/AI%20Model-GPT--3.5%20Turbo-purple?style=flat-square"></a>
+</p>
 ## 🚀 Features
 
 - 🎯 **Industry Filters**  
