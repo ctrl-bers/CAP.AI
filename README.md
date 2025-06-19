@@ -9,12 +9,7 @@ Capstone Assistant Powered By AI (CAP.AI) is an AI-powered web application that 
 With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack all generated in real time using AI.
 
 Note: Perfect this for  students, instructors, and project advisers who need instant, relevant, and creative capstone project ideas.
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Status-Live-brightgreen?style=flat-square"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Built%20With-Node.js-blue?style=flat-square"></a>
-  <a href="#"><img src="https://img.shields.io/badge/AI%20Model-GPT--3.5%20Turbo-purple?style=flat-square"></a>
-</p>
-## 🚀 Features
+
 
 - 🎯 **Industry Filters**  
   Choose from:  
@@ -36,3 +31,11 @@ Note: Perfect this for  students, instructors, and project advisers who need ins
 
 - 🖨️ **Download as PDF**  
           Option to export and download the generated capstone idea as a PDF file
+
+## 🔐 Token System
+
+ Start with 10,000 tokens
+- Each generation costs 1,000 tokens
+- If tokens reach 0, user must wait 5 hours** before tokens reset
+- Tokens reset automatically after the cooldown
+- Future feature: Upgrade tokens or premium plan support
