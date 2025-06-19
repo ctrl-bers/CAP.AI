@@ -17,8 +17,9 @@
   <!-- AI Integration -->
   <img src="https://img.shields.io/badge/GPT--3.5--Turbo-OpenRouter.ai-blueviolet?style=for-the-badge&logo=openai&logoColor=white" />
 </p>
+Here is my CAP-AI website [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](cap-ai-five.vercel.app/)
 
-### Description
+### Description 
 <div align="justify">
 
 **Capstone Assistant Powered By AI (CAP.AI)** is an AI-powered web application that creates personalized capstone project ideas based on your selected industry and project type. With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack to all generated in real time using AI.
