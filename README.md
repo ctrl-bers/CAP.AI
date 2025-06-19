@@ -9,6 +9,7 @@
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <br/>
+  <img src="https://img.shields.io/badge/PDF%20Export-jsPDF-ff8c00?style=for-the-badge&logo=javascript&logoColor=white" />
 
   <!-- Backend -->
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
@@ -67,5 +68,10 @@ Export and download the generated capstone idea as a PDF file
 - If tokens reach **0**, user must wait **5 hours** before tokens reset  
 - Tokens reset automatically after the cooldown  
 - _Future Feature_: Upgrade tokens or support premium plans
+
+
+### 👨‍💻 Author
+**Mark Berio**  
+
 
 
