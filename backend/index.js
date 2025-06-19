@@ -22,10 +22,10 @@ app.post('/api/proxy', async (req, res) => {
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo', // Use a model known to work with OpenRouter
+        model: 'openai/gpt-3.5-turbo', // Change to GPT-3.5 on OpenRouter
         messages: [{ role: 'user', content: prompt }],
-        max_tokens: 400
-      })
+        max_tokens: 300 // You can set this to 300, 256, or whatever limit you prefer
+    })
     });
     const data = await response.json();
     console.log('OpenRouter API response:', JSON.stringify(data, null, 2));
