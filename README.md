@@ -32,10 +32,17 @@ Note: Perfect this for  students, instructors, and project advisers who need ins
 - 🖨️ **Download as PDF**  
           Option to export and download the generated capstone idea as a PDF file
 
-## 🔐 Token System
+- 🔐 Token System
+          - Start with 10,000 tokens
+          - Each generation costs 1,000 tokens
+          - If tokens reach 0, user must wait 5 hours** before tokens reset
+          - Tokens reset automatically after the cooldown
+          - Future feature: Upgrade tokens or premium plan support
 
- Start with 10,000 tokens
-- Each generation costs 1,000 tokens
-- If tokens reach 0, user must wait 5 hours** before tokens reset
-- Tokens reset automatically after the cooldown
-- Future feature: Upgrade tokens or premium plan support
+![Frontend](https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-orange?style=for-the-badge&logo=html5)
+![Backend](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge&logo=node.js)
+![AI Powered](https://img.shields.io/badge/AI-GPT--3.5--Turbo-blueviolet?style=for-the-badge&logo=openai)
+![API](https://img.shields.io/badge/API-OpenRouter.ai-blue?style=for-the-badge&logo=openai)
+![License](https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Working-success?style=for-the-badge)
+
