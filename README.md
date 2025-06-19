@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="CAP.AI Logo" width="150"/>
+  <img src="Logo/CAP AI.png" alt="CAP.AI Logo" width="150"/>
 </p>
 
 # 🧠 CAP.AI - Capstone Assistant Powered by AI
