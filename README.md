@@ -19,8 +19,7 @@
 </p>
 
 # Description
-  Capstone Assistant Powered By AI (CAP.AI) is an AI-powered web application that creates personalized capstone project ideas based on your selected industry and project type.  
-With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack all generated in real time using AI.
+- Capstone Assistant Powered By AI (CAP.AI) is an AI-powered web application that creates personalized capstone project ideas based on your selected industry and project type. With a single click, it returns a complete project title, description, estimated duration, difficulty level, and recommended tech stack all generated in real time using AI.
 
 Note: Perfect this for  students, instructors, and project advisers who need instant, relevant, and creative capstone project ideas.
 
