@@ -70,9 +70,7 @@ Export and download the generated capstone idea as a PDF file
 - Tokens reset automatically after the cooldown  
 - _Future Feature_: Upgrade tokens or support premium plans
 
-
-### 👨‍💻 Author
-**Mark Berio**  
+ 
 
 
 
