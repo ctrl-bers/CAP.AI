@@ -15,7 +15,7 @@
   <br/>
 
   <!-- AI Integration -->
-  <img src="https://img.shields.io/badge/GPT--3.5--Turbo-OpenRouter.ai-blueviolet?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/GPT--3.5--Turbo-blueviolet?style=for-the-badge&logo=openai&logoColor=white" />
 </p>
 
 <h3 align="left">Visit the official CAP.AI website</h4>
