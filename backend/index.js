@@ -22,7 +22,7 @@ app.post('/api/proxy', async (req, res) => {
         'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3-70b-instruct', // Use a model known to work with OpenRouter
+        model: 'gpt-3.5-turbo', // Use a model known to work with OpenRouter
         messages: [{ role: 'user', content: prompt }],
         max_tokens: 400
       })
