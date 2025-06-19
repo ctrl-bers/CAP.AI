@@ -35,8 +35,6 @@
     <img src="https://img.shields.io/badge/Cap--AI%20Website-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=whi
 
 
----
-
 #### 🎯 Industry Filters  
 Choose from:  
 &nbsp;&nbsp;&nbsp;&nbsp;Healthcare, Education, Agriculture, Finance, Retail, Manufacturing, Transportation, Energy, Entertainment, Government
