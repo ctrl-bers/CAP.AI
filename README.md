@@ -31,32 +31,32 @@
 
 
 #### 🎯 Industry Filters  
-  Choose from:  
-        Healthcare, Education, Agriculture, Finance, Retail, Manufacturing, Transportation, Energy, Entertainment, Government
+Choose from:  
+&nbsp;&nbsp;&nbsp;&nbsp;Healthcare, Education, Agriculture, Finance, Retail, Manufacturing, Transportation, Energy, Entertainment, Government
 
-####💡 Project Type Selection 
-  Options include:  
-        Web Development, Arduino/IoT, Desktop Application, Artificial Intelligence, Cybersecurity, Game Development, Data Science & Analytics, Blockchain
+#### 💡 Project Type Selection  
+Options include:  
+&nbsp;&nbsp;&nbsp;&nbsp;Web Development, Arduino/IoT, Desktop Application, Artificial Intelligence, Cybersecurity, Game Development, Data Science & Analytics, Blockchain
 
-####⚡ One-Click AI Idea Generation 
-          Generates a complete capstone project idea based on selected filters
+#### ⚡ One-Click AI Idea Generation  
+Generate a complete capstone project idea based on selected filters
 
-####📄 Outputs Include:  
-          - Project Title  
-          - Description  
-          - Estimated Duration  
-          - Difficulty Level (Easy / Medium / Hard)  
-          - Recommended Tech Stack
+#### 📄 Outputs Include:  
+- Project Title  
+- Description  
+- Estimated Duration  
+- Difficulty Level (Easy / Medium / Hard)  
+- Recommended Tech Stack
 
-#### 🖨️ Download as PDF 
-          Option to export and download the generated capstone idea as a PDF file
+#### 🖨️ Download as PDF  
+Export and download the generated capstone idea as a PDF file
 
-####🔐   Token System
-          - Start with 10,000 tokens
-          - Each generation costs 1,000 tokens
-          - If tokens reach 0, user must wait 5 hours** before tokens reset
-          - Tokens reset automatically after the cooldown
-          - Future feature: Upgrade tokens or premium plan support
+#### 🔐 Token System  
+- Start with **10,000 tokens**  
+- Each generation costs **1,000 tokens**  
+- If tokens reach **0**, user must wait **5 hours** before tokens reset  
+- Tokens reset automatically after the cooldown  
+- _Future Feature_: Upgrade tokens or support premium plans
 
 
 
