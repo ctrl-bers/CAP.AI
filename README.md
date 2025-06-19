@@ -29,10 +29,6 @@
 
 ---
 
-<p align="center">
-  <strong>Here is my CAP.AI website →</strong>
-  <a href="https://cap-ai.vercel.app">
-    <img src="https://img.shields.io/badge/Cap--AI%20Website-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=whi
 
 
 #### 🎯 Industry Filters  
@@ -63,5 +59,9 @@ Export and download the generated capstone idea as a PDF file
 - Tokens reset automatically after the cooldown  
 - _Future Feature_: Upgrade tokens or support premium plans
 
+<p align="center">
+  <strong>Here is my CAP.AI website →</strong>
+  <a href="https://cap-ai.vercel.app">
+    <img src="https://img.shields.io/badge/Cap--AI%20Website-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=whi
 
 
