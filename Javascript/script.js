@@ -57,6 +57,13 @@ function checkCooldownOnLoad() {
 document.addEventListener('DOMContentLoaded', () => {
   tokensLeftEl.textContent = `Tokens left: ${tokensLeft}`;
   checkCooldownOnLoad();
+  // Only show modal and disable button if tokensLeft is 0
+  if (!cooldownUntil && tokensLeft === 0) {
+    showModal();
+    generateBtn.disabled = true;
+  } else {
+    generateBtn.disabled = false;
+  }
 });
 
 // Difficulty selection logic
@@ -73,7 +80,8 @@ diffBtns.forEach(btn => {
 function updateTokenUI() {
   tokensLeftEl.textContent = `Tokens left: ${tokensLeft}`;
   saveTokens();
-  generateBtn.disabled = tokensLeft <= 1000; // FIXED
+  // Only disable if tokensLeft is 0
+  generateBtn.disabled = tokensLeft === 0;
 }
 
 // Modal show/hide logic
@@ -83,9 +91,7 @@ modalOkBtn.addEventListener('click', () => {
 
 function showModal() {
   let nextTime;
-  if (tokensLeft <= 1000) {
-    tokensLeft = 0;
-    updateTokenUI();
+  if (tokensLeft === 0) {
     if (cooldownUntil && Date.now() < parseInt(cooldownUntil, 10)) {
       nextTime = new Date(parseInt(cooldownUntil, 10));
     } else {
@@ -99,7 +105,7 @@ function showModal() {
 
 // Generate Idea
 generateBtn.addEventListener('click', async () => {
-  if (tokensLeft <= 1000) { // FIXED
+  if (tokensLeft === 0) {
     showModal();
     return;
   }
@@ -159,8 +165,8 @@ Project Type: ${projectType}
       outputEl.innerHTML = `<div class=\"placeholder\">No idea generated. Try again.</div>`;
     }
 
-    tokensLeft -= 1000;
-    if (tokensLeft < 0) tokensLeft = 0;
+    // After successful idea generation:
+    tokensLeft = Math.max(0, tokensLeft - 1000);
     updateTokenUI();
   } catch (err) {
     outputEl.innerHTML = `<div class="placeholder">Error generating idea. Check your API key or internet connection.</div>`;
