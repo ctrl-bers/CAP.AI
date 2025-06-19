@@ -18,8 +18,8 @@
   <img src="https://img.shields.io/badge/GPT--3.5--Turbo-OpenRouter.ai-blueviolet?style=for-the-badge&logo=openai&logoColor=white" />
 </p>
 
-<h1 align="center">Visit the official CAP.AI website</h1>
-<p align="center">
+<h1 align="left">Visit the official CAP.AI website</h1>
+<p align="left">
   <a href="https://cap-ai-five.vercel.app/">
     <img src="https://img.shields.io/badge/Vercel-CAP--AI-000000?style=for-the-badge&logo=vercel&logoColor=white" />
   </a>
